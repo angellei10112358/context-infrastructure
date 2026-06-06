@@ -23,6 +23,7 @@ Start from my workspace AGENTS.md or CLAUDE.md. Follow any WORKSPACE.md or skill
 |---|---|---|
 | Web search | [tavily-skill](https://github.com/grapeot/tavily-skill) | Tavily search/extract CLI，给 agent 稳定 JSON 输出 |
 | Documents | [gdocs-skill](https://github.com/grapeot/gdocs-skill) | Google Docs 创建、搜索、修改、分享，支持 Markdown 和 tab |
+| Maps / travel | [google-maps-routing-skill](https://github.com/grapeot/google-maps-routing-skill) | Google Maps Routes + Geocoding CLI，支持地址解析、实时 drive time 和 leave-by 规划 |
 | Email | [outlook_skill](https://github.com/grapeot/outlook_skill) | Outlook.com 邮件下载、归档、Markdown 渲染、发送和日历邀请 |
 | Email | [resend_email_skill](https://github.com/grapeot/resend_email_skill) | Resend 自定义域名发信、收件读取、Markdown 导出和附件检查 |
 | Messaging | [imessage_skill](https://github.com/grapeot/imessage_skill) | macOS iMessage send-only CLI；联系人 alias 放本地 overlay |

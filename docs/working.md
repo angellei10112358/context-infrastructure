@@ -1,5 +1,10 @@
 # Working Log
 
+## 2026-06-06
+
+- Added `google-maps-routing-skill` to the public skill ecosystem as the Maps / travel capability for Google Maps Routes + Geocoding CLI workflows.
+- Updated README, setup guide, and starter skill index examples so Google Maps appears alongside other standalone public skill repos.
+
 ## 2026-05-25
 
 - Moved image generation from built-in skill (`rules/skills/generate_image.md`, `tools/generate_image.py`) to independent public repo [`image-generation-skill`](https://github.com/grapeot/image-generation-skill). The starter repo now references it via `docs/SKILL_ECOSYSTEM.md` instead of shipping its own implementation.

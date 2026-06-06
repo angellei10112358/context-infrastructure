@@ -23,7 +23,7 @@
 - ⚙️ Delayed Execution — starter fallback；durable/AI 延时任务安装 Process Launcher + OpenCode Skill
 
 ### Tier 3: 独立 public skill repos（按需安装）
-- 🔧 图片生成、Tavily、Google Docs、Outlook、Resend、OpenCode、Process Launcher、PPTX、Typefully、Circle Post、Stripe 等能力见 [`docs/SKILL_ECOSYSTEM.md`](../../docs/SKILL_ECOSYSTEM.md)
+- 🔧 图片生成、Tavily、Google Docs、Google Maps、Outlook、Resend、OpenCode、Process Launcher、PPTX、Typefully、Circle Post、Stripe 等能力见 [`docs/SKILL_ECOSYSTEM.md`](../../docs/SKILL_ECOSYSTEM.md)
 
 ### 说明
 ✅ = 最多 15 分钟即可使用

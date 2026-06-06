@@ -66,7 +66,7 @@
 
 ### 2c. 安装外部 public skill repo
 
-`rules/skills/` 里的内容是 starter set，不需要把所有能力都复制进来。需要更完整的能力时，先看 [`docs/SKILL_ECOSYSTEM.md`](docs/SKILL_ECOSYSTEM.md)。那里列出了一组独立维护的 public skill repo，例如 Tavily、Google Docs、Outlook、Resend、OpenCode、Process Launcher、PPTX、Typefully 和 Stripe。
+`rules/skills/` 里的内容是 starter set，不需要把所有能力都复制进来。需要更完整的能力时，先看 [`docs/SKILL_ECOSYSTEM.md`](docs/SKILL_ECOSYSTEM.md)。那里列出了一组独立维护的 public skill repo，例如 Tavily、Google Docs、Google Maps、Outlook、Resend、OpenCode、Process Launcher、PPTX、Typefully 和 Stripe。
 
 安装时，把目标 repo URL 交给你的 AI agent，让它从当前 workspace 的 `AGENTS.md` / `WORKSPACE.md` 出发，只暴露一个 root skill。通用技术 contract 留在 public repo；联系人 alias、本地路径、endpoint、token 和业务上下文留在本地 overlay。
 
