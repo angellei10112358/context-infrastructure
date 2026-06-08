@@ -37,8 +37,8 @@ Don't ask permission. Just do it.
 
 **调用后台 Agent / 并行 Subagent** → `rules/skills/workflow_parallel_subagents.md`  
 - 何时拆分任务、如何并行派出多个 subagent  
-- 准备调用 `run_in_background=True` 前，先把这个 skill 读一遍再执行  
-- 派出 agent 后等系统通知即可，不需要轮询
+- 准备调用多个 `functions.task` 前，先把这个 skill 读一遍再执行  
+- 当前并行方式是 `multi_tool_use.parallel`；不要使用旧 `run_in_background` / `background_output` 写法
 
 ## Axioms（公理）
 
@@ -46,21 +46,25 @@ Don't ask permission. Just do it.
 
 ## Sub-agent 模型路由
 
-配置文件：`~/.config/opencode/oh-my-opencode.json`
+配置入口：OpenCode 原生 `opencode.json` 的 `agent` 字段，或 `.opencode/agent(s)/*.md` agent 文件。`subagent_type` 必须是已注册 agent 名，不是模型名，也不是旧 `category`。
 
 常用路由速查：
-- **Gemini 3 Pro**（创意、brainstorm、非常规思路）→ `category="artistry"`
-- **Sonnet 4.6**（执行、调研、代码）→ `category="deep"` 或 `category="unspecified-high"`
-- **Haiku 4.5**（轻量任务）→ `category="quick"`
-- **Opus 4.6**（最难的逻辑/架构）→ `category="ultrabrain"`
+- **代码库探索** → `subagent_type="explore"`
+- **通用并行任务** → `subagent_type="general"`
+- **高可靠推理 / 工程判断** → `subagent_type="reasoning_gpt"`
+- **中文写作 / 改稿** → `subagent_type="writer_deepseek"`
+- **低成本初筛 / 轻量整理** → `subagent_type="cheap_glm"`
+- **本地隐私敏感任务** → `subagent_type="private_ds4"`
+- **Ollama Cloud zero-data-retention 低成本任务** → `subagent_type="ollama_kimi"`
+- **Ollama Cloud zero-data-retention 高质量任务** → `subagent_type="ollama_deepseek_pro"`
 
-创意性工作（brainstorm、文章结构、观点碰撞）默认派一个 Gemini（artistry）在后台跑，和自己的思考并行。用户说「调 Gemini」→ artistry，说「调 Sonnet」→ deep。
+创意性工作（brainstorm、文章结构、观点碰撞）默认并行派一个不同路线的 subagent 做反向视角或补充视角。不要使用旧的 `category="artistry"` / `category="deep"` / `category="ultrabrain"` 写法，除非当前 OpenCode 配置已经显式注册了这些同名 agent。
 
 ## Opus 工作模式
 
 如果你的模型 ID 包含 `opus`，以下规则生效：
 
-**你的 context window 很宝贵。** Opus 的核心能力是设计、质量把关和写作。调研、写脚本、关键词检索这些事交给 sub-agent。你的两个主要任务：（1）**设计**：拆分问题、设计计划、分配 sub-agent 任务；（2）**写作与质量把关**：最终文本自己写，sub-agent 结果自己验证。写代码、调研、数据处理全部 delegate，写作和质量验证绝不外包。设计任务拆分时默认考虑并行性（`run_in_background=true`）。
+**你的 context window 很宝贵。** Opus 的核心能力是设计、质量把关和写作。调研、写脚本、关键词检索这些事交给 sub-agent。你的两个主要任务：（1）**设计**：拆分问题、设计计划、分配 sub-agent 任务；（2）**写作与质量把关**：最终文本自己写，sub-agent 结果自己验证。写代码、调研、数据处理全部 delegate，写作和质量验证绝不外包。设计任务拆分时默认考虑并行性，用 `multi_tool_use.parallel` 同时发出多个 `functions.task`。
 
 ## Memory System（记忆系统）
 
