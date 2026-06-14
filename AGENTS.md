@@ -26,6 +26,10 @@ Don't ask permission. Just do it.
 
 **找文件时，先查 `rules/WORKSPACE.md`，再搜索。** WORKSPACE.md 是这个 workspace 的目录索引，记录了每类内容的存放位置。绝大多数情况下查一下就能定位到目标目录，不需要全盘 glob/grep。如果发现新目录或项目没被收录，顺手更新 WORKSPACE.md。
 
+## Python 环境
+
+根目录 `.venv/` 用 `uv pip install`，隔离环境在 `adhoc_jobs/<project>/.venv/`。
+
 ## Skills
 
 **Skills** 是 AI 可复用的能力，包括工作流、API 指南、最佳实践等。
